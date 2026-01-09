@@ -14,6 +14,135 @@ import {
 } from 'lucide-react'
 import './Home.css'
 
+// Metatron's Cube SVG Component
+function MetatronsCube() {
+  const size = 400
+  const center = size / 2
+  const outerRadius = 160
+  const innerRadius = 80
+
+  // 6 outer vertices (hexagon)
+  const outerVertices = []
+  for (let i = 0; i < 6; i++) {
+    const angle = (i * 60 - 90) * (Math.PI / 180)
+    outerVertices.push({
+      x: center + outerRadius * Math.cos(angle),
+      y: center + outerRadius * Math.sin(angle)
+    })
+  }
+
+  // 6 inner vertices (inner hexagon)
+  const innerVertices = []
+  for (let i = 0; i < 6; i++) {
+    const angle = (i * 60 - 60) * (Math.PI / 180)
+    innerVertices.push({
+      x: center + innerRadius * Math.cos(angle),
+      y: center + innerRadius * Math.sin(angle)
+    })
+  }
+
+  // Center vertex
+  const centerVertex = { x: center, y: center }
+
+  // All 13 vertices
+  const allVertices = [...outerVertices, ...innerVertices, centerVertex]
+
+  // Generate all connecting lines
+  const lines = []
+  for (let i = 0; i < allVertices.length; i++) {
+    for (let j = i + 1; j < allVertices.length; j++) {
+      lines.push({ from: allVertices[i], to: allVertices[j] })
+    }
+  }
+
+  return (
+    <svg
+      viewBox={`0 0 ${size} ${size}`}
+      className="metatrons-cube"
+      style={{ width: '100%', height: '100%', maxWidth: '500px' }}
+    >
+      <defs>
+        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#00d4ff" stopOpacity="0.6" />
+          <stop offset="50%" stopColor="#00ff88" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#00d4ff" stopOpacity="0.6" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#00ff88" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#00d4ff" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* Background glow */}
+      <circle cx={center} cy={center} r={outerRadius + 40} fill="url(#centerGlow)" />
+
+      {/* All connecting lines */}
+      {lines.map((line, idx) => (
+        <line
+          key={idx}
+          x1={line.from.x}
+          y1={line.from.y}
+          x2={line.to.x}
+          y2={line.to.y}
+          stroke="url(#lineGradient)"
+          strokeWidth="1"
+          opacity="0.4"
+          filter="url(#glow)"
+        />
+      ))}
+
+      {/* Outer hexagon */}
+      <polygon
+        points={outerVertices.map(v => `${v.x},${v.y}`).join(' ')}
+        fill="none"
+        stroke="#00d4ff"
+        strokeWidth="2"
+        filter="url(#glow)"
+      />
+
+      {/* Inner hexagon */}
+      <polygon
+        points={innerVertices.map(v => `${v.x},${v.y}`).join(' ')}
+        fill="none"
+        stroke="#00ff88"
+        strokeWidth="2"
+        filter="url(#glow)"
+      />
+
+      {/* Vertex circles - outer */}
+      {outerVertices.map((v, idx) => (
+        <g key={`outer-${idx}`}>
+          <circle cx={v.x} cy={v.y} r="12" fill="#0a1628" stroke="#00d4ff" strokeWidth="2" filter="url(#glow)" />
+          <circle cx={v.x} cy={v.y} r="5" fill="#00d4ff" />
+        </g>
+      ))}
+
+      {/* Vertex circles - inner */}
+      {innerVertices.map((v, idx) => (
+        <g key={`inner-${idx}`}>
+          <circle cx={v.x} cy={v.y} r="10" fill="#0a1628" stroke="#00ff88" strokeWidth="2" filter="url(#glow)" />
+          <circle cx={v.x} cy={v.y} r="4" fill="#00ff88" />
+        </g>
+      ))}
+
+      {/* Center vertex */}
+      <circle cx={center} cy={center} r="18" fill="#0a1628" stroke="#9370db" strokeWidth="3" filter="url(#glow)" />
+      <circle cx={center} cy={center} r="8" fill="#9370db" />
+
+      {/* Animated pulse rings */}
+      <circle cx={center} cy={center} r={outerRadius} fill="none" stroke="#00d4ff" strokeWidth="1" opacity="0.3" className="pulse-ring" />
+      <circle cx={center} cy={center} r={outerRadius + 30} fill="none" stroke="#00ff88" strokeWidth="1" opacity="0.2" className="pulse-ring-delayed" />
+    </svg>
+  )
+}
+
 const features = [
   {
     icon: Lock,
@@ -63,36 +192,42 @@ function Home() {
           <div className="hero-glow" />
           <div className="hero-grid" />
         </div>
-        <div className="container hero-content">
-          <div className="hero-badge">
-            <Hexagon size={16} />
-            <span>Quantum AI Security Net</span>
+        <div className="container hero-container">
+          <div className="hero-content">
+            <div className="hero-badge">
+              <Hexagon size={16} />
+              <span>Quantum AI Security Net</span>
+            </div>
+            <h1>
+              <span className="text-gradient">Quantum Security</span>
+              <br />
+              Network Protocol
+            </h1>
+            <p className="hero-subtitle">
+              Next-generation cybersecurity powered by quantum encryption,
+              AI threat detection, and Metatron's Cube geometric encoding.
+            </p>
+            <div className="hero-actions">
+              <Link to="/demo" className="btn btn-primary">
+                Try Live Demo
+                <ArrowRight size={18} />
+              </Link>
+              <Link to="/features" className="btn btn-secondary">
+                Explore Features
+              </Link>
+            </div>
+            <div className="hero-stats">
+              {stats.map((stat, idx) => (
+                <div key={idx} className="stat">
+                  <span className="stat-value">{stat.value}</span>
+                  <span className="stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <h1>
-            <span className="text-gradient">Quantum Security</span>
-            <br />
-            Network Protocol
-          </h1>
-          <p className="hero-subtitle">
-            Next-generation cybersecurity powered by quantum encryption,
-            AI threat detection, and Metatron's Cube geometric encoding.
-          </p>
-          <div className="hero-actions">
-            <Link to="/demo" className="btn btn-primary">
-              Try Live Demo
-              <ArrowRight size={18} />
-            </Link>
-            <Link to="/features" className="btn btn-secondary">
-              Explore Features
-            </Link>
-          </div>
-          <div className="hero-stats">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="stat">
-                <span className="stat-value">{stat.value}</span>
-                <span className="stat-label">{stat.label}</span>
-              </div>
-            ))}
+          <div className="hero-graphic">
+            <MetatronsCube />
+            <div className="graphic-label">Metatron's Cube Encryption</div>
           </div>
         </div>
       </section>
