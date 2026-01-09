@@ -30,11 +30,41 @@
 .demo-container {
   max-width: 1000px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .demo-controls {
   text-align: center;
   margin-bottom: 40px;
+}
+
+/* On wider screens place controls beside the main visual */
+@media (min-width: 769px) {
+  .demo-container {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .demo-controls {
+    flex: 0 0 240px;
+    text-align: left;
+    margin-bottom: 0;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 24px;
+  }
+
+  .demo-visual {
+    flex: 1 1 auto;
+  }
+
+  /* Keep the quantum animation aligned to the left within its card when controls are beside it */
+  .core-visual .quantum-animation {
+    margin: 0;
+  }
 }
 
 .demo-button {
