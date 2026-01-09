@@ -1,0 +1,177 @@
+/* Security Levels Page */
+.security-levels-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Tiers Grid */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 1400px) {
+  .tiers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tiers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tier Card */
+.tier-card {
+  transition: all var(--transition-normal);
+}
+
+.tier-card.active {
+  box-shadow: var(--shadow-card), var(--shadow-glow-cyan);
+}
+
+.tier-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  border-bottom: 2px solid;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tier-badge {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--qsn-primary-dark);
+}
+
+.tier-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xs);
+}
+
+.tier-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--qsn-accent-cyan);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Features */
+.tier-features {
+  margin-bottom: var(--spacing-lg);
+}
+
+.tier-features h4 {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.tier-features ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.tier-features li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Limitations */
+.tier-limitations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+}
+
+.limitation-tag {
+  font-size: 0.7rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+/* Tier Button */
+.tier-button {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--qsn-primary-light);
+  border: 1px solid var(--btn-color, var(--qsn-accent-cyan));
+  border-radius: var(--radius-md);
+  color: var(--btn-color, var(--qsn-accent-cyan));
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tier-button:hover {
+  background: var(--btn-color, var(--qsn-accent-cyan));
+  color: var(--qsn-primary-dark);
+}
+
+.tier-button.active {
+  background: var(--btn-color, var(--qsn-accent-cyan));
+  color: var(--qsn-primary-dark);
+}
+
+/* Comparison Table */
+.comparison-card {
+  margin-top: var(--spacing-lg);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: var(--spacing-md);
+  text-align: center;
+  border-bottom: var(--border-subtle);
+}
+
+.comparison-table th {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.comparison-table th:first-child,
+.comparison-table td:first-child {
+  text-align: left;
+}
+
+.comparison-table td:first-child {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.comparison-table td:first-child svg {
+  color: var(--text-muted);
+}
+
+.comparison-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}

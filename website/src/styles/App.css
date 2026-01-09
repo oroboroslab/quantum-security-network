@@ -1,0 +1,10 @@
+/* QSN Website Layout */
+.qsn-website {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.qsn-website main {
+  flex: 1;
+}

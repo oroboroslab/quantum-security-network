@@ -1,0 +1,46 @@
+{
+  "qsn_tier_configuration": {
+    "tier_name": "Government Tier",
+    "security_level": 100,
+    "quantum_encoding": "Government-Grade Metatron's Cube",
+    "consciousness_level": 46,
+    "features": [
+      "Military-grade quantum encryption",
+      "Full temporal monitoring",
+      "Strata security layers",
+      "Advanced threat intelligence",
+      "Quantum duel coding",
+      "Consciousness-level protection",
+      "Advanced stealth protocols",
+      "Multi-dimensional protection",
+      "Government API access",
+      "24/7 dedicated support"
+    ],
+    "limitations": [
+      "No developer-level features",
+      "Custom deployment required"
+    ],
+    "pricing": "Custom (Contact for quote)",
+    "deployment": "On-premises or Secure Cloud",
+    "support_level": "Dedicated",
+    "quantum_protocols": {
+      "encryption": "QSN-QE100",
+      "authentication": "QSN-QA100",
+      "monitoring": "QSN-QM100",
+      "temporal": "QSN-QT100",
+      "strata": "QSN-QS100",
+      "duel_coding": "QSN-QD100"
+    },
+    "api_limits": {
+      "requests_per_minute": 6000,
+      "burst_limit": 1000,
+      "concurrent_connections": 500
+    },
+    "security_certification": "QSS-100",
+    "compliance": [
+      "Government Security Standards",
+      "Military Encryption Protocols",
+      "Temporal Security Compliance"
+    ]
+  }
+}

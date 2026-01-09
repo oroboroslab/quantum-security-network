@@ -1,0 +1,248 @@
+/* Dashboard Page */
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.page-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.page-header h1 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.dashboard-grid .span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid .span-2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid .span-2 {
+    grid-column: span 1;
+  }
+}
+
+/* Status Grid */
+.status-grid {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+/* Threat Intelligence */
+.threat-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: var(--border-subtle);
+}
+
+.threat-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.threat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.threat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.threat-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Encryption Visual */
+.encryption-visual {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.cube-animation {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cube-ring {
+  position: absolute;
+  border: 2px solid var(--qsn-accent-cyan);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.ring-1 {
+  width: 100%;
+  height: 100%;
+  animation: rotate-slow 10s linear infinite;
+}
+
+.ring-2 {
+  width: 75%;
+  height: 75%;
+  animation: rotate-slow 8s linear infinite reverse;
+}
+
+.ring-3 {
+  width: 50%;
+  height: 50%;
+  animation: rotate-slow 6s linear infinite;
+}
+
+.cube-center {
+  color: var(--qsn-accent-cyan);
+  z-index: 1;
+}
+
+.encryption-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+.enc-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.enc-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.enc-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--qsn-accent-cyan);
+}
+
+/* Activity Grid */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.activity-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.activity-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .activity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Level Features */
+.level-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.feature.active {
+  color: var(--status-secure);
+  opacity: 1;
+}
+
+.feature svg {
+  flex-shrink: 0;
+}
+
+.feature span {
+  font-size: 0.85rem;
+}

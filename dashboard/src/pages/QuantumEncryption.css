@@ -1,0 +1,220 @@
+/* Quantum Encryption Page */
+.quantum-encryption-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Status Grid */
+.encryption-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 900px) {
+  .encryption-status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Metatron Visual */
+.status-visual {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.metatron-visual {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.hex-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hex-ring.outer {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.hex-ring.inner {
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
+  animation: rotate-slow 15s linear infinite reverse;
+}
+
+.hex-vertex {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--qsn-accent-cyan);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: rotate(calc(var(--i) * 60deg)) translateY(-60px);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.hex-ring.inner .hex-vertex {
+  width: 8px;
+  height: 8px;
+  transform: rotate(calc(var(--i) * 60deg + 30deg)) translateY(-35px);
+}
+
+.hex-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--qsn-accent-cyan);
+  z-index: 1;
+}
+
+/* Status Info */
+.status-info {
+  text-align: center;
+}
+
+.status-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(0, 212, 255, 0.2);
+  border: 1px solid var(--qsn-accent-cyan);
+  border-radius: var(--radius-sm);
+  color: var(--qsn-accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.status-info p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Parameters */
+.param-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.param-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+}
+
+.param-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.param-value {
+  color: var(--qsn-accent-cyan);
+  font-weight: 600;
+  font-family: 'Monaco', 'Consolas', monospace;
+}
+
+/* Encryption Metrics */
+.encryption-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 1200px) {
+  .encryption-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .encryption-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+.strength-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.strength-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.strength-unit {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Encoding Steps */
+.encoding-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.encoding-step {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--qsn-accent-cyan);
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background: var(--qsn-accent-cyan);
+  color: var(--qsn-primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h4 {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.step-content p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.step-check {
+  color: var(--status-secure);
+  flex-shrink: 0;
+}
